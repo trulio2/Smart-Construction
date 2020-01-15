@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "galio-framework";
-import { ScrollView, View, AsyncStorage } from "react-native";
+import { View, AsyncStorage } from "react-native";
 import HeaderScreen from "./HeaderScreen";
 import { isSignedIn } from "../services/auth";
 import { apiBackEnd } from "../Variables";
@@ -117,8 +117,10 @@ export default class HomeScreen extends React.Component {
     }
     return (
       <View style={{ flex: 1 }}>
-        <HeaderScreen {...this.props} name={'Início'} />
-        <ScrollView>
+        <HeaderScreen {...this.props} name={"Início"} />
+        <View
+          style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
+        >
           {this.state.equips.map((equip, index) => {
             return <Text key={index}>{equip.name}</Text>;
           })}
@@ -128,7 +130,7 @@ export default class HomeScreen extends React.Component {
           {this.state.modems.map((modem, index) => {
             return <Text key={index}>{modem.name}</Text>;
           })}
-        </ScrollView>
+        </View>
       </View>
     );
   }

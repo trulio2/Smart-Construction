@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, KeyboardAvoidingView, Keyboard } from "react-native";
-import { Input, Text } from "galio-framework";
+import { Input, Text, theme } from "galio-framework";
 import { Button } from "react-native-elements";
 import { onSignIn, isSignedIn } from "../services/auth";
 const logo = require("../assets/logo.png");
@@ -66,12 +66,14 @@ export default class LoginScreen extends React.Component {
           <Input
             placeholder="Usuário"
             value={this.state.user}
+            rounded
             style={{ width: 300 }}
             onChangeText={user => this.setState({ user })}
           />
           <Input
             placeholder="Senha"
             value={this.state.password}
+            rounded
             password
             viewPass
             style={{ width: 300 }}
@@ -91,7 +93,7 @@ export default class LoginScreen extends React.Component {
               this.setState({ disabled: true });
               this.handleSignIn();
             }}
-            title="Login"
+            title="Entrar"
           />
         </KeyboardAvoidingView>
       );

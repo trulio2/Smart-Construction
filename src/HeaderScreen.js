@@ -6,7 +6,7 @@ export default class HeaderScreen extends React.Component {
   render() {
     return (
       <Header style={{ alignItems: "center", height: 65 }}>
-        <Left style={{ right: 90, top: 10 }}>
+        <Left style={{ right: 100, top: 10 }}>
           <Icon
             name="menu"
             style={{color: 'white', position: 'absolute', top: -10}}
