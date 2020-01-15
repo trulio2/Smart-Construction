@@ -1,6 +1,13 @@
 import React from "react";
-import { View, SafeAreaView, ScrollView, Image, AsyncStorage } from "react-native";
+import {
+  View,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  AsyncStorage
+} from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
+import { LinearGradient } from "expo-linear-gradient";
 import { createAppContainer } from "react-navigation";
 import { isSignedIn } from "../services/auth";
 import LoginScreen from "./LoginScreen";
@@ -15,7 +22,7 @@ export default class Index extends React.Component {
     this.state = {
       signed: false,
       loaded: false,
-      userId: '',
+      userId: ""
     };
     this.isSigned();
     this.getId();
@@ -27,7 +34,7 @@ export default class Index extends React.Component {
   isSigned = async () => {
     let signed = await isSignedIn();
     this.setState({ signed }, () => {
-        this.setState({loaded: true})
+      this.setState({ loaded: true });
     });
   };
   signed = signed => {
@@ -36,7 +43,7 @@ export default class Index extends React.Component {
   render() {
     if (this.state.loaded) {
       if (this.state.signed) {
-        return <NavigatorSigned screenProps={this}/>;
+        return <NavigatorSigned screenProps={this} />;
       } else {
         return <LoginScreen {...this} />;
       }
@@ -47,24 +54,28 @@ export default class Index extends React.Component {
 }
 const CustomDrawerComponent = props => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View
-        style={{
-          heght: 150,
-          backgroundColor: "black",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <Image
-          source={require("../assets/logo.png")}
-          style={{ height: 120, width: 160, borderRadius: 60 }}
-        />
-      </View>
-      <ScrollView>
-        <DrawerItems {...props} />
-      </ScrollView>
-    </SafeAreaView>
+    <LinearGradient
+      colors={["#412e2e", "#01010d"]}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView>
+        <View
+          style={{
+            heght: 150,
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Image
+            source={require("../assets/logo.png")}
+            style={{ height: 120, width: 160, borderRadius: 60 }}
+          />
+        </View>
+        <ScrollView>
+          <DrawerItems {...props} />
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 const AppDrawerNavigatorSigned = createDrawerNavigator(
@@ -77,7 +88,8 @@ const AppDrawerNavigatorSigned = createDrawerNavigator(
   {
     contentComponent: CustomDrawerComponent,
     contentOptions: {
-      activeTintColor: "orange"
+      activeTintColor: "orange",
+      inactiveTintColor: "white"
     }
   }
 );

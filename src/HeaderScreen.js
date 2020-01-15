@@ -5,7 +5,7 @@ import { Header, Left, Icon } from "native-base";
 export default class HeaderScreen extends React.Component {
   render() {
     return (
-      <Header style={{ alignItems: "center", height: 65 }}>
+      <Header style={{ alignItems: "center", height: 65, backgroundColor: 'black' }}>
         <Left style={{ right: 100, top: 10 }}>
           <Icon
             name="menu"
